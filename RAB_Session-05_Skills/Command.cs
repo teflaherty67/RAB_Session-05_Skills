@@ -1,4 +1,4 @@
-#region Namespaces
+ #region Namespaces
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -29,5 +29,21 @@ namespace RAB_Session_05_Skills
 
             return Result.Succeeded;
         }
+    }
+
+    public class Neighborhood
+    {
+        public string Name { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+
+    }
+
+    public class Building
+    {
+        public string Name { get; set; }
+        public int MyProperty { get; set; }
+        public int NumFloors { get; set; }
+        public double Area { get; set; }
     }
 }
