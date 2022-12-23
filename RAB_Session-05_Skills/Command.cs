@@ -25,6 +25,14 @@ namespace RAB_Session_05_Skills
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
 
+            Building myBuilding = new Building("Office Building", "10 Main Street", 10, 10000);
+
+            myBuilding.Name = "Office Building 2";
+
+            Building myBuilding1 = new Building("Hospital", "20 Main Street", 20, 20000);
+            Building myBuilding2 = new Building("Apartment Building", "30 Main Street", 30, 40000);
+            Building myBuilding3 = new Building("Office Building", "40 Main Street", 5, 4000);
+
 
 
             return Result.Succeeded;
@@ -36,14 +44,21 @@ namespace RAB_Session_05_Skills
         public string Name { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-
+        public List<Building> buildingList { get; set; }
     }
 
     public class Building
     {
         public string Name { get; set; }
-        public int MyProperty { get; set; }
+        public string Address { get; set; }
         public int NumFloors { get; set; }
         public double Area { get; set; }
+        public Building(string name, string address, int numFloors, double area)
+        {
+            Name = name;
+            Address = address;
+            NumFloors = numFloors;
+            Area = area;
+        }
     }
 }
