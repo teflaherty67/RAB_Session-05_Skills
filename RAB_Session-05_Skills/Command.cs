@@ -44,7 +44,14 @@ namespace RAB_Session_05_Skills
         public string Name { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public List<Building> buildingList { get; set; }
+        public List<Building> BuildingList { get; set; }
+        public Neighborhood(string name, string city, string state, List<Building> buildingList)
+        {
+            Name = name;
+            City = city;
+            State = state;
+            BuildingList = buildingList;
+        }
     }
 
     public class Building
