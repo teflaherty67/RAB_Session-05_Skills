@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autodesk.Revit.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace RAB_Session_05_Skills
 {
     internal static class Utils
     {
-        public static void method1()
+        public static void MyStaticMethod()
         {
-            // add method code here
+            TaskDialog.Show("test", "This is my static method!");
         }
     }
 }

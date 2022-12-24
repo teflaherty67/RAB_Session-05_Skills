@@ -45,6 +45,8 @@ namespace RAB_Session_05_Skills
             TaskDialog.Show("Test", "There are " + neighborhood.GetBuildingCount().ToString()
                 + " buildings in " + neighborhood.Name + " " + neighborhood.City);
 
+            Utils.MyStaticMethod();
+
             return Result.Succeeded;
         }
     }
