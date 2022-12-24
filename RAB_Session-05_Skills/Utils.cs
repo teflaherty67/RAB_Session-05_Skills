@@ -8,7 +8,7 @@ namespace RAB_Session_05_Skills
 {
     internal static class Utils
     {
-        internal static void method1()
+        public static void method1()
         {
             // add method code here
         }

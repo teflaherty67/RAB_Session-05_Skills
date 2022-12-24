@@ -33,7 +33,17 @@ namespace RAB_Session_05_Skills
             Building myBuilding2 = new Building("Apartment Building", "30 Main Street", 30, 40000);
             Building myBuilding3 = new Building("Office Building", "40 Main Street", 5, 4000);
 
+            List<Building> buildingList = new List<Building>();
+            buildingList.Add(myBuilding);
+            buildingList.Add(myBuilding1);
+            buildingList.Add(myBuilding2);
+            buildingList.Add(myBuilding3);
+            buildingList.Add(new Building("Store", "50 Main Street", 2, 20000));
 
+            Neighborhood neighborhood = new Neighborhood("Downtown", "Boston", "MA", buildingList);
+
+            TaskDialog.Show("Test", "There are " + neighborhood.GetBuildingCount().ToString()
+                + " buildings in " + neighborhood.Name + " " + neighborhood.City);
 
             return Result.Succeeded;
         }
@@ -52,6 +62,11 @@ namespace RAB_Session_05_Skills
             State = state;
             BuildingList = buildingList;
         }
+
+        public int GetBuildingCount()
+        {
+            return BuildingList.Count;
+        }                    
     }
 
     public class Building
@@ -66,6 +81,11 @@ namespace RAB_Session_05_Skills
             Address = address;
             NumFloors = numFloors;
             Area = area;
+        }
+
+        public double GetBuildingArea()
+        {
+            return Area * NumFloors;
         }
     }
 }
