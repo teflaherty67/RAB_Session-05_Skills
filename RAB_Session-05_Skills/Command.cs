@@ -2,6 +2,7 @@
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using System;
@@ -46,6 +47,25 @@ namespace RAB_Session_05_Skills
                 + " buildings in " + neighborhood.Name + " " + neighborhood.City);
 
             Utils.MyStaticMethod();
+
+            FilteredElementCollector collector = new FilteredElementCollector(doc);
+            collector.OfCategory(BuiltInCategory.OST_Rooms);
+
+            using (Transaction t = new Transaction(doc))
+            {
+                t.Start("Insert family");
+
+                foreach (SpatialElement room in collector)
+                {
+                    LocationPoint loc = room.Location as LocationPoint;
+                    XYZ roomPoint = loc.Point;
+
+                    FamilySymbol myFS = Utils.GetFamilySymbolByName(doc, "Desk", "60\" x 30\"");
+                    FamilyInstance myInstance = doc.Create.NewFamilyInstance(roomPoint, myFS, StructuralType.NonStructural);
+                }
+
+                t.Commit();
+            }            
 
             return Result.Succeeded;
         }

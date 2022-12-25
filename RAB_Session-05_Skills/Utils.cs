@@ -1,4 +1,5 @@
-﻿using Autodesk.Revit.UI;
+﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,20 @@ namespace RAB_Session_05_Skills
         public static void MyStaticMethod()
         {
             TaskDialog.Show("test", "This is my static method!");
+        }
+
+        internal static FamilySymbol GetFamilySymbolByName(Document doc, string familyName, string familySymbolName)
+        {
+            FilteredElementCollector collector = new FilteredElementCollector(doc);
+            collector.OfClass(typeof(FamilySymbol));
+
+            foreach(FamilySymbol fs in collector)
+            {
+                if(fs.Name == familySymbolName && fs.FamilyName == familyName)
+                    return fs;
+            }
+
+            return null;
         }
     }
 }
