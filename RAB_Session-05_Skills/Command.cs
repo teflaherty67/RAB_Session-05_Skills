@@ -61,13 +61,26 @@ namespace RAB_Session_05_Skills
                     XYZ roomPoint = loc.Point;
 
                     FamilySymbol myFS = Utils.GetFamilySymbolByName(doc, "Desk", "60\" x 30\"");
-                    FamilyInstance myInstance = doc.Create.NewFamilyInstance(roomPoint, myFS, StructuralType.NonStructural);
+                    FamilyInstance myInstance = doc.Create.NewFamilyInstance(roomPoint, myFS,
+                        StructuralType.NonStructural);
+
+                    SetParameterVaule(room, "Ceiling Finish", "ACT");
                 }
 
                 t.Commit();
             }            
 
             return Result.Succeeded;
+        }
+
+        private void SetParameterVaule(Element curElement, string paramName, string paramValue)
+        {
+            IList<Parameter> paramList = curElement.GetParameters(paramName);
+
+            foreach(Parameter param in paramList)
+            {
+                param.Set(paramValue);
+            }
         }
     }
 
